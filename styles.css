@@ -404,7 +404,8 @@ body {
   background-color: whitesmoke;
   border-radius: 20px;
   width: 350px;
-  padding: 40px 0;
+  padding: 20px 0;
+  height: 475px;
 }
 
 .portfolio-item:not(:last-of-type) {
