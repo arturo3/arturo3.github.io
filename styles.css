@@ -1,0 +1,595 @@
+:root {
+    --celestial-blue: #5299D3;
+    --midnight-green: #0B5563;
+    --puce: #D88C9A;
+    --davys-gray: #5E5C6C;
+    --french-gray: #C9C9CF;
+    --flax: #F3DE8A;
+    --mobile-view-width: 600px;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--french-gray);
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ PARENT CONTAINTER
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+.arturo3-container {
+  position: relative;
+  display: flex;
+  width: 100vw;
+}
+
+@media (max-width: 600px) {
+  .arturo3-container {
+    flex-direction: column;
+  }
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ NAVIGATION MENU
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+.navigation-menu {
+    position: absolute;
+    display: flex;
+    background-color: var(--celestial-blue);
+    height: 100vh;
+    width: 300px;
+    z-index: 10;
+    -webkit-box-shadow: 3px 0px 5px 1px rgba(136, 136, 158);
+    -moz-box-shadow: 3px 0px 5px 1px rgba(136, 136, 158);
+    box-shadow: 3px 0px 5px 1px rgba(136, 136, 158);
+  flex-direction: column;
+}
+
+.fox {
+    border-radius: 50%;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.image-background {
+    margin-top: 20px;
+    margin-left: 10px;
+    position: relative;
+    width: 280px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+     & > .spinner {
+        position: absolute;
+        z-index: 1;
+        width: 330px;
+        height: 330px;
+        color: var(--midnight-green);
+
+        &:after {
+            content: " ";
+            display: block;
+            width: 250px;
+            height: 250px;
+            margin: 28px;
+            border-radius: 50%;
+            border: 12px solid currentColor;
+            border-color: currentColor transparent currentColor transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+    }
+}
+
+@keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.image-background > .backdrop {
+    position: absolute;
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    z-index: 5;
+    border-radius: 50%;;
+}
+
+.menu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu > .menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: var(--flax);
+  cursor: pointer;
+  margin: 15px 0;
+  font-size: 20px;
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.menu > .menu-item > a {
+  text-decoration: none;
+  color: var(--flax);
+}
+
+.menu > .menu-item > a:visited {
+  color: var(--flax);
+  text-decoration: none;
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ NAVIGATION MENU MOBILE
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+@media (max-width: 600px) {
+  .navigation-menu {
+   position: relative;
+   height: 300px; 
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
+   position: sticky;
+   top: 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    height: 85px;
+  }
+
+.header > .image-background {
+  width: 70px;
+  height: 70px;
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+  .navigation-menu {
+    height: fit-content;
+  }
+
+  .header > .image-background > .backdrop {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .header > .image-background > .backdrop > img {
+    margin-top: 0 !important;
+  }
+
+  .header > .image-background > .spinner {
+    display: none;
+  }
+
+  .navigation-menu > .menu {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0;
+  }
+
+  .navigation-menu > .menu > .menu-item {
+    margin-bottom: 0;
+  }
+}
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ MAIN CONTENT SECTION
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+@media (max-width: 600px) {
+  .content {
+    position: static !important;
+    padding: 20px 10px !important;
+    overflow: auto !important;
+    height: auto !important;
+    width: calc(100vw - 20px) !important;
+  }
+
+  .content > .panel > .panel-content {
+    width: 95% !important;
+    justify-content: space-between;
+  }
+}
+
+.content {
+    position: absolute;
+    left: 300px;
+    height: calc(100vh - 40px);
+    width: calc(100vw - 340px);
+    overflow: scroll;
+    background-color: var(--french-gray);
+    padding: 20px;
+}
+
+.content > .panel {
+    border-radius: 20px;
+    min-height: 700px;
+    max-width: 1300px;
+}
+
+.content > .panel#contact {
+  min-height: auto;
+  height: fit-content;
+  padding-bottom: 40px;
+}
+
+.content > .panel:not(:last-of-type) {
+    margin-bottom: 10px;
+}
+
+.content > .panel > .title {
+  font-family: "Bebas Neue", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 70px;
+  text-align: center;
+  padding-top: 30px;
+  color: var(--flax);
+}
+
+.content > .panel > .panel-content {
+  font-family: "Teko", sans-serif;
+  font-size: 22px;
+  width: 70%;
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ ABOUT ME
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+.about-me, #contact {
+    background-color: var(--midnight-green);
+    width: 100%;
+    color: var(--flax);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.about-me .title {
+  font-family: "Teko", sans-serif !important;
+  font-optical-sizing: auto; 
+}
+
+.about-me .sub-title {
+  font-family: "Bebas Neue", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.about-me > .bio {
+  font-family: "Teko", sans-serif !important;
+  font-size: 22px;
+  width: 70%;
+}
+
+.about-me > .bio > .programming-opinions {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me > .bio > .fun-stuff {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me > .bio  > .teams {
+  display: flex;
+  justify-content: space-around;
+}
+
+.about-me > .bio > .teams > .team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-me > .bio > .teams > .team.pumas > img {
+  width: 140px;
+}
+
+.about-me > .bio > .teams > .team.milan > img {
+  width: 84px;
+}
+
+.about-me > .bio > .follow-me {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  align-items: center;
+}
+
+.about-me > .bio > .follow-me > .title {
+  font-family: "Bebas Neue", system-ui !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
+}
+
+@media (max-width: 600px) {
+  .about-me > .bio {
+    width: 92%;
+  }
+
+  #bio-2 {
+    display: none;
+  }
+
+  .about-me > .bio > .teams {
+    justify-content: space-evenly;
+  }
+
+  .about-me > .bio > .teams > .team > span {
+    display: none;
+  }
+
+  .about-me > .bio > .fun-stuff {
+    display: none;
+  }
+
+  .about-me > .bio > .teams > .team.pumas > img {
+    width: 100px;
+  }
+
+  .about-me > .bio > .teams > .team.milan > img {
+    width: 55px;
+  }
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ PORTFOLIO
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+.portfolio {
+    background-color: var(--puce);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+
+.panel-content.portfolio {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  width: 90% !important;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  width: 350px;
+  padding: 40px 0;
+}
+
+.portfolio-item:not(:last-of-type) {
+  margin-right: 50px
+}
+
+.portfolio-item-title {
+  margin-bottom: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.portfolio-item > .cover-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.portfolio-item > .description {
+  margin: 0 30px;
+  margin-bottom: 50px;
+}
+
+.portfolio-item > .action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-item > .action-buttons .visit {
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--celestial-blue);
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  padding-top: 5px;
+}
+.portfolio-item > .action-buttons .visit:hover {
+  background-color: var(--midnight-green);
+  color: var(--flax);
+}
+
+@media (max-width: 600px) {
+  .content > .panel > .panel-content.portfolio {
+    flex-direction: column;
+  }
+
+  .portfolio > .portfolio-item {
+    margin-right: 0 !important;
+    width: 95%;
+    margin-bottom: 15px;
+    padding: 20px 0;
+  }
+
+  .portfolio-item-title {
+    margin-bottom: 20px;
+  }
+
+  .portfolio-item > .description {
+    display: none;
+  }
+
+  #spartan-logo {
+    width: 220px;
+  }
+
+  #mji-logo {
+    width: 180px;
+  }
+}
+
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ TECH THOUGHTS
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+ .content > .panel.blog {
+  min-height: auto;
+  height: 300px;
+}
+
+
+ .blog {
+  background-color: var(--davys-gray);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.brainstorming {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--flax);
+  font-size: 28px !important;
+  flex-grow: 1;
+}
+
+@media(max-width: 600px) {
+  .content > .panel.blog {
+    height: 340px;
+  }
+
+  .content > .panel.blog > .panel-content {
+    display: flex;
+    justify-content: center;
+  }
+}
+/*
+ ***************************************************************************************
+ ***************************************************************************************
+ CONTACT
+ ***************************************************************************************
+ ***************************************************************************************
+ */
+#contact .panel-content > .socials {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+
+#contact > .panel-content > .socials > .social {
+  width: 125px;
+  height: 125px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact > .panel-content > .socials > .social > a {
+  cursor: pointer;
+}
+
+.github-logo {
+  width: 110px;
+  margin-top: 7px;
+}
+
+.linkedin-logo {
+  width: 83px;
+  margin-top: 10px;
+}
+
+.x-logo {
+  width: 80px;
+  margin-top: 10px;
+}
+
+@media(max-width: 600px) {
+  #contact .panel-content > .socials {
+    margin-top: 40px;
+  }
+
+  #contact > .panel-content > .socials > .social {
+    width: 65px;
+    height: 65px;
+  }
+
+  .github-logo {
+    width: 55px;
+    margin-top: 9px;
+  }
+
+  .linkedin-logo {
+    width: 44px;
+  }
+
+  .x-logo {
+    width: 38px;
+  }
+}
