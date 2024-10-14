@@ -344,6 +344,11 @@ body {
 }
 
 @media (max-width: 600px) {
+  .content > .panel#about-me {
+    min-height: auto;
+    height: fit-content;
+  }
+
   .about-me > .bio {
     width: 92%;
   }
@@ -467,6 +472,7 @@ body {
     width: 95%;
     margin-bottom: 15px;
     padding: 20px 0;
+    height: fit-content;
   }
 
   .portfolio-item-title {
