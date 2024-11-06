@@ -3,7 +3,7 @@ let rotationIntervalId = null;
 let lastScrollPosition = 0;
 let isMobileView = false;
 
-document.addEventListener("DOMContentLoaded", (_event) => {
+window.addEventListener("load", (_event) => {
   isMobileView = isMobile();
   startListeningToScrolling();
 });
