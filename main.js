@@ -2,6 +2,7 @@ let rotationDegree = 0;
 let rotationIntervalId = null;
 let lastScrollPosition = 0;
 let isMobileView = false;
+let navigationMenuHeight = null;
 
 window.addEventListener("load", (_event) => {
   isMobileView = isMobile();
@@ -86,16 +87,25 @@ function highlightMenuItemInView() {
     // of the viewport
     let cardClosestToTop = null;
 
+    if (navigationMenuHeight == null) {
+      navigationMenuHeight = getMobileNaviationMenuHeight();
+    }
+
     cards.forEach(c => {
       let cardTop = Math.abs(c.getBoundingClientRect().top);
-
+      cardTop -= navigationMenuHeight;
+      
       if (cardClosestToTop == null) cardClosestToTop = [c, cardTop];
       else {
         if (cardTop < cardClosestToTop[1]) cardClosestToTop = [c, cardTop];
       }
     });
 
-    if (cardClosestToTop) highlightMenuItem(cardClosestToTop[0].id);
+    const mobileFooter = document.querySelector('div.mobile-footer');
+    const mobileFooterInView = mobileFooter.getBoundingClientRect().top < window.innerHeight;
+
+    if (mobileFooterInView) highlightMenuItem('contact');
+    else if (cardClosestToTop) highlightMenuItem(cardClosestToTop[0].id);
   } else {
     const cardsInView = cards.filter(c => c.getBoundingClientRect().top > 0);
     const firstCardInView = cardsInView[0];
@@ -112,4 +122,13 @@ function highlightMenuItem(menuItem) {
 
   const itemToSelect = document.querySelector(`div.menu-item.mi-${menuItem}`);
   itemToSelect.classList.add('selected');
+}
+
+function getMobileNaviationMenuHeight() {
+  const navigationMenu = document.querySelector('div.navigation-menu')
+  let menuHeight = window.getComputedStyle(navigationMenu).height;
+  menuHeight = menuHeight.replace('px', '');
+  menuHeight = +menuHeight;
+
+  return menuHeight;
 }
